@@ -4,7 +4,7 @@ int yylex();
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "TS.h" // Todas las funciones de la TS
+#include "tablaDeSimbolos.h" // Todas las funciones de la TS
 
 void yyerror(char *s);
 

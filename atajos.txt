@@ -1,3 +1,4 @@
-bison -d parser.y
-flex scanner.l
-gcc -o ejecutable lex.yy.c parser.tab.c tablaDeSimbolos.c
+bison -d moduloParser.y
+flex moduloScanner.l
+gcc -o ejecutable lex.yy.c moduloParser.tab.c tablaDeSimbolos.c
+./ejecutable

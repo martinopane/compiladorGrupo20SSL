@@ -1,7 +1,7 @@
 %{
 #include <stdio.h>
 #include <string.h>
-#include "parser.tab.h"
+#include "moduloParser.tab.h"
 
 void yyerror(char *s);
 int yylex();

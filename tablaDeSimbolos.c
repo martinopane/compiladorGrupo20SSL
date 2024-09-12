@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include "TS.h"
+#include "tablaDeSimbolos.h"
 
 ////// TABLA DE SÍMBOLOS //////
 
