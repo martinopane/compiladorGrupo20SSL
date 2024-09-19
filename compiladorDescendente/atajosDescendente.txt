@@ -1,0 +1,2 @@
+gcc -o ejecutable descendente.c
+./ejecutable test1.m
