@@ -398,9 +398,15 @@ void ErrorSintactico()
 
 void Generar(char * co, char * a, char * b, char * c)
 {
- /* Produce la salida de la instruccion para la MV por stdout */
-
- printf("%s %s%c%s%c%s\n", co, a, ',', b, ',', c);
+    /* Produce la salida de la instrucción para la MV por stdout */
+    if (strlen(a) > 0 && strlen(b) > 0 && strlen(c) > 0)
+        printf("%s %s,%s,%s\n", co, a, b, c);
+    else if (strlen(a) > 0 && strlen(b) > 0)
+        printf("%s %s,%s\n", co, a, b);
+    else if (strlen(a) > 0)
+        printf("%s %s\n", co, a);
+    else
+        printf("%s\n", co);  // Para el caso de "Detiene"
 }
 
 char * Extraer(REG_EXPRESION * preg)

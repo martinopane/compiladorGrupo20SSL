@@ -1,2 +1,2 @@
 # compiladorGrupo20SSL
-Compilador de Sintáxis y Semántica de los Lenguajes
+Compiladores de Sintáxis y Semántica de los Lenguajes

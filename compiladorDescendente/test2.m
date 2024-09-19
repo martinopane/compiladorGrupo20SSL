@@ -1,5 +1,6 @@
 inicio 
 a := 7; 
 b := 14; 
-escribir (a + b);
+c:= a+b;
+escribir (c);
 fin
