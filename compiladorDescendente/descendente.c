@@ -484,7 +484,7 @@ void Asignar(REG_EXPRESION izq, REG_EXPRESION der)
  Generar("Almacena", Extraer(&der), izq.nombre, "");
 }
 
-/*Scanner*/
+/*Scanner..*/
 
 TOKEN scanner()
 {
