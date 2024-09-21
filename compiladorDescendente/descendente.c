@@ -233,7 +233,26 @@ void ListaExpresiones(void)
 
 void Expresion(REG_EXPRESION * presul)
 {
- /* <expresion> -> <primaria> { <operadorAditivo> <primaria> #gen_infijo } */
+ /* <expresion> -> <termino> { (SUMA | RESTA) <termino> #gen_infijo } */
+
+ REG_EXPRESION operandoIzq, operandoDer;
+ char op[TAMLEX];
+ TOKEN t;
+
+ Termino(&operandoIzq);
+
+ for ( t = ProximoToken(); t == SUMA || t == RESTA; t = ProximoToken() )
+ {
+    OperadorAditivo(op);
+    Termino(&operandoDer);
+    operandoIzq = GenInfijo(operandoIzq, op, operandoDer);
+ }
+ *presul = operandoIzq;
+}
+
+void Termino(REG_EXPRESION * presul)
+{
+ /* <termino> -> <primaria> { MULTIPLICACION <primaria> #gen_infijo } */
 
  REG_EXPRESION operandoIzq, operandoDer;
  char op[TAMLEX];
@@ -241,11 +260,11 @@ void Expresion(REG_EXPRESION * presul)
 
  Primaria(&operandoIzq);
 
- for ( t = ProximoToken(); t == SUMA || t == RESTA || t == MULTIPLICACION; t = ProximoToken() )
+ for ( t = ProximoToken(); t == MULTIPLICACION; t = ProximoToken() )
  {
-  OperadorAditivo(op);
-  Primaria(&operandoDer);
-  operandoIzq = GenInfijo(operandoIzq, op, operandoDer);
+    OperadorAditivo(op);
+    Primaria(&operandoDer);
+    operandoIzq = GenInfijo(operandoIzq, op, operandoDer);
  }
  *presul = operandoIzq;
 }
@@ -484,7 +503,7 @@ void Asignar(REG_EXPRESION izq, REG_EXPRESION der)
  Generar("Almacena", Extraer(&der), izq.nombre, "");
 }
 
-/*Scanner..*/
+/*Scanner*/
 
 TOKEN scanner()
 {
